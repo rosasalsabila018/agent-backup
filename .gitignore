@@ -1,0 +1,20 @@
+# Secrets — never commit these, even if they slip into this folder.
+# (The backup was curated to exclude secrets; this is a safety net.)
+.env
+*.env
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.secret
+credentials.json
+**/credentials/**
+**/.env
+
+# Runtime junk — never part of the config
+__pycache__/
+*.pyc
+.write-lock
+.DS_Store

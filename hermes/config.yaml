@@ -1,0 +1,14 @@
+model:
+  provider: custom
+  base_url: http://127.0.0.1:20128/v1
+  default: muse
+  api_key: "${NINE_ROUTER_API_KEY}"
+gateway:
+  unmanaged_idle_exit_seconds: 0
+mcp_servers:
+  rea:
+    command: /usr/bin/node
+    args:
+      - /home/hatch/workspace/rea/scripts/rea.mjs
+      - mcp
+    enabled: true
