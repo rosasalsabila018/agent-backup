@@ -7,6 +7,7 @@ _What you want to hear about without asking, what you never want brought up, and
 - Temuan pentest nadiavpn.web.id dan panduan perbaikannya — Sayang meminta Muse memantau pentest dan melaporkan temuan (19 Nov 2026).
 - Hasil bedah APK dan laporan analisisnya (Mobile Tool, ceirku.org, HTTP Custom, XNXX) — Sayang berkali-kali minta dibongkar dan dilaporkan saat selesai.
 - Riset aplikasi IMEI seperti Mobile Tool: provider API, harga, dan sketsa backend — Sayang bertanya "mau bikin semacam aplikasi mobile tool itu harus ngambil darimana api ya" (19 Nov 2026).
+- Perkembangan pendaftaran akun Muse.ai / Meta dan perbaikan script daftar_meta.py — Sayang meminta script-nya 20 Nov 2026 dan menguji v1–v5 sampai akun kedua jadi, jadi kabari bila ada versi baru atau langkah yang masih tertinggal di pihaknya.
 - Jawab dalam Bahasa Indonesia, langsung dan singkat untuk perintah singkat; detail penuh hanya untuk laporan build, kegagalan, atau temuan.
 
 ## Never tell me about
