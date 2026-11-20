@@ -90,4 +90,8 @@ cp hermes/config.yaml ~/.hermes/config.yaml
 
 - Backup ini snapshot 20 Nov 2026. File di VM terus berubah (memori harian, cron, skill baru);
   buat snapshot baru secara berkala bila mau tetap sinkron.
+- **Backup otomatis aktif**: skrip `backup.sh` di repo ini dijalankan cron harian jam 03:00 WIB
+  (id `agent-backup-auto`): sync ulang file sumber, pindai secret, lalu commit + push hanya bila
+  ada perubahan. Log tiap run: `~/workspace/agent-backup-sync.log` (di luar repo). Bila repo lokal
+  hilang, skrip meng-clone ulang dari GitHub.
 - Repo ini private. Jangan jadikan publik — `MEMORY.md` berisi detail pribadi & riwayat kerja.
