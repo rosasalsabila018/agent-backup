@@ -13,6 +13,7 @@ _What you want to hear about without asking, what you never want brought up, and
 ## Never tell me about
 
 - Pengecekan rutin ARTEX yang hasilnya tetap "masih dijeda" — Sayang memerintahkan ARTEX berhenti sampai waktu yang tidak ditentukan (19 Nov 2026 15:34 WIB) dan menegaskan lagi 20:13 WIB; monitor diam bila tidak ada temuan baru.
+- ARTEX sudah di-uninstall seluruhnya atas permintaan Sayang 21 Nov 2026 ~11:50 WIB ("Ya, hapus ARTEX semuanya") dan pentest nadiavpn.web.id ditutup — jangan usulkan memasang ulang ARTEX atau melanjutkan pentest.
 - Jangan mengungkit lagi dump memori Frida buat kasih3.hc — Sayang bilang "skip dulu deh next time saja" (19 Nov 2026 17:28 WIB, sumber: chat reverse-engineer APK) sampai ia sendiri yang update.
 
 ## When
