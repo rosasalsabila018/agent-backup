@@ -12,3 +12,6 @@ mcp_servers:
       - /home/hatch/workspace/rea/scripts/rea.mjs
       - mcp
     enabled: true
+onboarding:
+  seen:
+    busy_input_prompt: true
