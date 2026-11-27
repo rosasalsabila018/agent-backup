@@ -30,8 +30,10 @@ fi
 # 3. Commit + push hanya bila ada perubahan
 cd "$B" || exit 1
 # Self-heal: helper kredensial gh hilang tiap VM diganti (config global di /var/lib/hatch
-# tidak selamat dari ganti VM); set di config lokal repo (di home, selamat) sebelum push.
-git config credential.helper '!/usr/bin/gh auth git-credential' 2>/dev/null || true
+# tidak selamat dari ganti VM). Pulihkan lewat gh sendiri (jalur yang dipercaya wrapper):
+# JANGAN set credential.helper di config lokal repo — hatch-git mengarantina config
+# repo yang berisi helper `!...` dan menghapus entrinya.
+gh auth setup-git >/dev/null 2>&1 || true
 git add -A
 if git diff --cached --quiet; then
   echo "[$TS] tidak ada perubahan, selesai"
