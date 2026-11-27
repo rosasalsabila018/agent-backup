@@ -29,6 +29,9 @@ if grep -rIlE 'sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{
 fi
 # 3. Commit + push hanya bila ada perubahan
 cd "$B" || exit 1
+# Self-heal: helper kredensial gh hilang tiap VM diganti (config global di /var/lib/hatch
+# tidak selamat dari ganti VM); set di config lokal repo (di home, selamat) sebelum push.
+git config credential.helper '!/usr/bin/gh auth git-credential' 2>/dev/null || true
 git add -A
 if git diff --cached --quiet; then
   echo "[$TS] tidak ada perubahan, selesai"
