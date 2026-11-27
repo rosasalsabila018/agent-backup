@@ -38,6 +38,11 @@ gh auth setup-git >/dev/null 2>&1 || true
 # di bawah memakai flag -c protocol.version=0 (terverifikasi jalan 27 Nov 2026).
 # Pakai flag, bukan config repo: hatch-git mengarantina config repo yang berisi
 # entri tertentu (terbukti pada credential.helper `!...`).
+# CATATAN 27 Nov 2026 ~08:20 WIB: VM boot 07:39 memblokir UPLOAD ke GitHub sepenuhnya
+# (POST git-receive-pack: h2 REFUSED_STREAM, h1.1 403 JSON tanpa header GitHub;
+# POST api.github.com sama; CONNECT github.com:22 403) sementara GET jalan normal.
+# Blokir ini tergantung egress VM — push 03:00 di VM sebelumnya berhasil.
+# Bila push gagal, commit tetap aman di repo lokal (home persisten); cron besok coba lagi.
 git add -A
 if git diff --cached --quiet; then
   echo "[$TS] tidak ada perubahan, selesai"
