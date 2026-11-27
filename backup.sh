@@ -12,7 +12,7 @@ echo "[$TS] mulai"
 if [ ! -d "$B/.git" ]; then
   echo "[$TS] repo lokal hilang, clone ulang"
   rm -rf "$B"
-  git clone https://github.com/rosasalsabila018/agent-backup.git "$B" || { echo "[$TS] GAGAL clone"; exit 1; }
+  git -c protocol.version=0 clone https://github.com/rosasalsabila018/agent-backup.git "$B" || { echo "[$TS] GAGAL clone"; exit 1; }
 fi
 # 1. Sync file konfigurasi (rsync hanya membaca sumber, aslinya tak diubah)
 rsync -a ~/SOUL.md ~/AGENTS.md ~/USER.md ~/MEMORY.md ~/TOOLS.md ~/IDENTITY.md ~/HEARTBEAT.md ~/PROACTIVE_PREFERENCES.md ~/workspace/DAFTAR-INSTALASI.md "$B/" || exit 1
@@ -34,12 +34,16 @@ cd "$B" || exit 1
 # JANGAN set credential.helper di config lokal repo — hatch-git mengarantina config
 # repo yang berisi helper `!...` dan menghapus entrinya.
 gh auth setup-git >/dev/null 2>&1 || true
+# Egress proxy mematikan git protocol v2 (curl 56, koneksi putus); perintah clone/push
+# di bawah memakai flag -c protocol.version=0 (terverifikasi jalan 27 Nov 2026).
+# Pakai flag, bukan config repo: hatch-git mengarantina config repo yang berisi
+# entri tertentu (terbukti pada credential.helper `!...`).
 git add -A
 if git diff --cached --quiet; then
   echo "[$TS] tidak ada perubahan, selesai"
   exit 0
 fi
 git commit -q -m "Auto-backup $(date -u '+%Y-%m-%dT%H:%M:%SZ')" || exit 1
-git push -q origin main || { echo "[$TS] GAGAL push"; exit 1; }
+git -c protocol.version=0 push -q origin main || { echo "[$TS] GAGAL push"; exit 1; }
 echo "[$TS] push OK: $(git rev-parse --short HEAD)"
 } >> "$LOG" 2>&1
